@@ -1,0 +1,20 @@
+- name: Add qBittorrent repository
+  apt_repository:
+    repo: ppa:qbittorrent-team/qbittorrent-stable
+    state: present
+
+- name: Update APT after adding qBittorrent repository
+  apt:
+    update_cache: yes
+
+- name: Install qBittorrent
+  apt:
+    name: qbittorrent
+    state: present
+
+#- name: Ensure qBittorrent starts on boot
+#  systemd:
+#    name: qbittorrent-nox
+#    enabled: yes
+#    state: started
+
