@@ -1,0 +1,5 @@
+- name: OS specific vars
+  include_vars: "ubuntu.yml"
+
+- name: Ubuntu setup tasks
+  include_tasks: ubuntu.yml
