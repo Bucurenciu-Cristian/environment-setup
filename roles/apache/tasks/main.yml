@@ -1,0 +1,36 @@
+- name: Install Apache2
+  apt:
+    name: apache2
+    state: present
+
+- name: Add PHP 7.3 repository
+  apt_repository:
+    repo: ppa:ondrej/php
+    state: present
+  register: add_php_repo
+
+- name: Update APT after adding PHP repository
+  apt:
+    update_cache: yes
+  when: add_php_repo.changed
+
+- name: Install PHP 7.3 and modules
+  apt:
+    name:
+      - php7.3
+      - php7.3-cli
+      - php7.3-fpm
+      - php7.3-json
+      - php7.3-common
+      - php7.3-mysql
+      - php7.3-zip
+      - php7.3-gd
+      - php7.3-mbstring
+      - php7.3-curl
+      - php7.3-xml
+      - php7.3-bcmath
+      - libapache2-mod-php7.3
+    state: present
+
+- name: Enable PHP 7.3 in Apache2
+  shell: a2enmod php7.3
