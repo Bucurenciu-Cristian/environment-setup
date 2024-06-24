@@ -1,0 +1,38 @@
+- name: Add Neovim unstable repository
+  apt_repository:
+    repo: ppa:neovim-ppa/unstable
+    state: present
+
+- name: Update APT after adding Neovim repository
+  apt:
+    update_cache: yes
+
+- name: Install Neovim and dependencies
+  apt:
+    name:
+      - make
+      - gcc
+      - ripgrep
+      - unzip
+      - git
+      - xclip
+      - neovim
+    state: present
+
+- name: Clone kickstart.nvim configuration
+  git:
+    repo: 'https://github.com/Bucurenciu-Cristian/kickstart.nvim.git'
+    dest: /home/{{ ansible_user_id }}/.config/nvim
+    force: yes
+    version: main
+  become: yes
+  become_user: "{{ ansible_user_id }}"
+
+- name: Install Packer.nvim plugin manager
+  shell: |
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+  args:
+    executable: /bin/bash
+  become: yes
+  become_user: "{{ ansible_user_id }}"
