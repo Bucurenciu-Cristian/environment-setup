@@ -1,0 +1,8 @@
+- name: Install GNU Stow
+  apt:
+    name: stow
+    state: present
+
+- name: Stow dotfiles
+  shell: |
+    stow -v -d {{ playbook_dir }}/roles/dotfiles/files -t ~ *
