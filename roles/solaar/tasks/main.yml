@@ -1,0 +1,13 @@
+- name: Add Solaar PPA repository
+  apt_repository:
+    repo: ppa:solaar-unifying/stable
+    state: present
+
+- name: Update APT after adding Solaar repository
+  apt:
+    update_cache: yes
+
+- name: Install Solaar
+  apt:
+    name: solaar
+    state: present

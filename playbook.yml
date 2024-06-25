@@ -2,12 +2,13 @@
   become: yes
   become_method: sudo
   roles:
-    - zsh
-    # Working 
-    #- qbittorrent
-    #- plex
-    #- neovim
-    # Not tested 
-    #- docker
-    #- dotfiles
-    # add other roles as needed
+    - solaar
+# Working
+#    - zsh
+#    - qbittorrent
+#    - plex
+#    - neovim
+# Not tested
+#    - docker
+#    - dotfiles
+# add other roles as needed
