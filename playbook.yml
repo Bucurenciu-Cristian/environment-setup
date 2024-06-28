@@ -2,13 +2,18 @@
   become: yes
   become_method: sudo
   roles:
-    - solaar
 # Working
+#    - anydesk
+#    - solaar
 #    - zsh
 #    - qbittorrent
 #    - plex
 #    - neovim
 # Not tested
+#    - 1password
+#    - 1password_cli
+#    - brave # should work, I suppose
+#    - mpv # should work, I suppose
 #    - docker
 #    - dotfiles
 # add other roles as needed
