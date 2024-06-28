@@ -1,0 +1,15 @@
+- name: Download 1Password CLI
+  get_url:
+    url: https://cache.agilebits.com/dist/1P/op/pkg/v1.10.0/op_linux_amd64_v1.10.0.zip
+    dest: /tmp/op_linux_amd64_v1.10.0.zip
+
+- name: Unzip 1Password CLI
+  unarchive:
+    src: /tmp/op_linux_amd64_v1.10.0.zip
+    dest: /usr/local/bin/
+    remote_src: yes
+
+- name: Ensure 1Password CLI is executable
+  file:
+    path: /usr/local/bin/op
+    mode: '0755'
