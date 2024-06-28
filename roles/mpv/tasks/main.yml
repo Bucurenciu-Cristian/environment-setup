@@ -1,0 +1,8 @@
+- name: Update APT package manager
+  apt:
+    update_cache: yes
+
+- name: Install MPV player
+  apt:
+    name: mpv
+    state: present
