@@ -4,12 +4,14 @@
   roles:
 # Working
 #    - anydesk
+#    - nodejs
 #    - solaar
 #    - zsh
 #    - qbittorrent
 #    - plex
 #    - neovim
 # Not tested
+#    - barrier
 #    - 1password
 #    - 1password_cli
 #    - brave # should work, I suppose

@@ -1,0 +1,22 @@
+- name: Remove old Node.js versions
+  apt:
+    name: nodejs
+    state: absent
+  ignore_errors: yes
+
+- name: Install prerequisites for Node.js
+  apt:
+    name:
+      - curl
+      - software-properties-common
+    state: present
+
+- name: Add NodeSource repository for Node.js
+  shell: curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+  args:
+    creates: /etc/apt/sources.list.d/nodesource.list
+
+- name: Install Node.js
+  apt:
+    name: nodejs
+    state: present
